@@ -20,6 +20,9 @@ const ReviewForm = ({onSubmit}) => {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
         });
         newReview.date = formattedDate;
         newReview.rating = rating;
@@ -30,11 +33,11 @@ const ReviewForm = ({onSubmit}) => {
     }
 
     return (
-        <Box className="container">
+        <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", width:500, paddingLeft:10, paddingRight:10, backgroundColor:"#f0f0f0", borderRadius:4}}>
             <form className="review-form" onSubmit={handleSubmit}>
                 <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
-                    <Typography variant="h4" sx={{m:0}}>Leave a Review! </Typography>
-                    <Rating sx={{alignSelf:"center", m:4}} name="half-rating" size="large" value={rating} defaultValue={4.5} precision={0.5}  onChange={(e, newValue) => setRating(newValue)} />
+                    <Typography variant="h4" sx={{m:2, alignSelf:"center"}}>Leave a Review! </Typography>
+                    <Rating sx={{alignSelf:"center", m:2}} name="half-rating" size="large" value={rating} defaultValue={4.5} precision={0.5}  onChange={(e, newValue) => setRating(newValue)} />
                     <TextField id="filled-basic" label="Name" variant="filled" value={name} onChange={(e) => setName(e.target.value)} />
                     <TextField multiline id="filled-basic" label="Comment (optional)" variant="filled" value={comment} onChange={(e) => setComment(e.target.value)} />
                     <Button sx={{m:4}} variant="contained" type="submit">Submit Review</Button>
