@@ -30,14 +30,23 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", m:2}}>
+            <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", m:[0,0,0,5]}}>
                 {writingMode ? <>
-                        <Button sx={{width:200, alignSelf:"start"}} variant="outlined" onClick={()=>setWritingMode(false)}>Close form</Button>
+                        <Button sx={{width:200, alignSelf:"start", m: {
+                                xs: 2,
+                                md:1,
+                                lg: 0,
+                            },}} variant="outlined" onClick={()=>setWritingMode(false)}>Close form</Button>
                         <ReviewForm onSubmit={addReview} services={services}/>
                     </>
                 : <Button sx={{
                         width:200,
                         alignSelf:"start",
+                        m: {
+                            xs: 2,
+                            md:1,
+                            lg: 0,
+                        },
                         backgroundColor: '#2228C3',
                         '&:hover': {
                             backgroundColor: '#161B9C',
@@ -45,7 +54,9 @@ function App() {
                     }}
                           variant="contained" onClick={()=>setWritingMode(true)}> Leave a review</Button>}
             </Box>
-            <ReviewsList reviews={reviews} services={services}/>
+            <Box sx={{width:"95%", margin:"auto"}}>
+                <ReviewsList reviews={reviews} services={services}/>
+            </Box>
         </ThemeProvider>
   )
 }

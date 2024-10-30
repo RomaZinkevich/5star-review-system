@@ -44,7 +44,7 @@ const ReviewForm = ({onSubmit, services}) => {
     }
 
     return (
-        <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", width:500, paddingLeft:10, paddingRight:10, backgroundColor:"#FBFCFE", borderRadius:4}}>
+        <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center", width:500, paddingLeft:10, paddingRight:10, backgroundColor:"#FBFCFE", borderRadius:4, marginBottom:2, marginTop:2}}>
             <form className="review-form" onSubmit={handleSubmit}>
                 <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
                     <Typography variant="h4" sx={{m:2, alignSelf:"center"}}>Leave a Review! </Typography>
@@ -61,8 +61,11 @@ const ReviewForm = ({onSubmit, services}) => {
                             {services.map((s) => <MenuItem key={s.id} value={s.name}>{s.name}</MenuItem>)}
                         </Select>
                     </FormControl>
-                    <TextField id="filled-basic" label="Name" variant="filled" value={name} onChange={(e) => setName(e.target.value)} />
-                    <TextField multiline id="filled-basic" label="Comment (optional)" variant="filled" value={comment} onChange={(e) => setComment(e.target.value)} />
+                    <TextField inputProps={{ maxLength: 70 }} id="filled-basic" label="Name" variant="filled" value={name} onChange={(e) => setName(e.target.value)} />
+                    <TextField style={{
+                        height: 150,        // Set a fixed height (adjust as needed)
+                        overflow: 'auto'    // Allow scrolling within the TextField
+                    }} inputProps={{ maxLength: 1000 }} multiline id="filled-basic" label="Comment (optional)" variant="filled" value={comment} onChange={(e) => setComment(e.target.value)} />
                     <Button sx={{
                         m: 4,
                         backgroundColor: '#2228C3',
