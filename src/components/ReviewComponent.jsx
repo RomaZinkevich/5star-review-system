@@ -27,7 +27,10 @@ const ReviewComponent = ({review}) => {
             </Box>
             {review.comment ?
                 <Box className="reviewText" marginTop={2}>
-                    <Typography variant="body1">{review.comment}</Typography>
+                    <Typography style={{
+                        overflow: 'visible',
+                        overflowWrap: 'break-word'
+                    }} variant="body1">{review.comment}</Typography>
                 </Box>
                 : null
             }
