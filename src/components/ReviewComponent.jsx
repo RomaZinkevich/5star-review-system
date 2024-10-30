@@ -18,7 +18,14 @@ const ReviewComponent = ({review}) => {
                             padding: '8px' // Optional padding for better visibility
                         }}
                     />
-                    <Typography variant="h6">{review.userName}</Typography>
+                    <Typography style={{
+                        overflow: 'hidden',
+                        overflowWrap: 'break-word',
+                        wordBreak: 'break-all',
+                        maxHeight: '50px',
+                        lineHeight: '1.2',
+                        fontSize:"1.15rem"
+                    }} variant="h6">{review.userName}</Typography>
                 </Box>
                 <Box className="reviewInfo" textAlign="right">
                     <Typography variant="subtitle2">{review.date.split(", ")[0]}</Typography>
